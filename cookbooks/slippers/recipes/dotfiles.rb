@@ -6,9 +6,11 @@ package [
 end
 
 # TODO derp home directory
-git '/vagrant/dotfiles' do
+git '/home/vagrant/dotfiles' do
   repository 'https://github.com/davemenninger/dotfiles.git'
   revision 'master'
+  user 'vagrant'
+  group 'vagrant'
   action :checkout
 end
 
