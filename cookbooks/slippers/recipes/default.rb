@@ -5,6 +5,19 @@ end
 
 include_recipe 'apt' # this will execute an `apt-get update`
 
+package [
+  'fish',
+  'git',
+  'libmysqlclient-dev',
+  'mysql-client',
+  'ruby2.4',
+  'ruby2.4-dev',
+] do
+  action :upgrade
+end
+
+include_recipe 'ruby_build'
+
 node.default['rbenv']['user_installs'] = [
   {
     'user'    => 'vagrant',
@@ -27,18 +40,6 @@ node.default['rbenv']['user_installs'] = [
 ]
 
 include_recipe 'ruby_rbenv::user'
-include_recipe 'ruby_build'
-
-package [
-  'fish',
-  'git',
-  'libmysqlclient-dev',
-  'mysql-client',
-  'ruby2.4',
-  'ruby2.4-dev',
-] do
-  action :upgrade
-end
 
 ssh_known_hosts_entry 'github.com'
 
