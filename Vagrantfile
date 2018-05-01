@@ -22,7 +22,7 @@ Vagrant.configure(2) do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
-  # config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "forwarded_port", guest: 4567, host: 5678, auto_correct: true
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -72,7 +72,7 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get update
   #   sudo apt-get install -y apache2
   # SHELL
-  
+
   #require vagrant-berkshelf
   config.berkshelf.enabled = true
   config.berkshelf.berksfile_path = './cookbooks/slippers/Berksfile'
