@@ -1,14 +1,14 @@
-package [
-  'fish',
-  'autojump',
+package %w[
+  fish
+  autojump
 ] do
   action :upgrade
 end
 
-# TODO derp home directory
+# TODO: derp home directory
 git '/home/vagrant/dotfiles' do
   repository 'https://github.com/davemenninger/dotfiles.git'
-  revision 'master'
+  revision 'vim8'
   user 'vagrant'
   group 'vagrant'
   action :checkout
