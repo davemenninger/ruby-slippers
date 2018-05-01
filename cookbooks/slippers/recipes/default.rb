@@ -9,7 +9,9 @@ package [
   'fish',
   'git',
   'libmysqlclient-dev',
+  'libpq-dev',
   'mysql-client',
+  'mysql-server',
   'ruby2.4',
   'ruby2.4-dev',
 ] do
@@ -26,7 +28,10 @@ node.default['rbenv']['user_installs'] = [
     'gems'    =>
     {
       '2.4.1' => [
+        { 'name' => 'bundler' },
         { 'name' => 'rubocop' },
+        { 'name' => 'sequel' },
+        { 'name' => 'mysql2' },
       ],
       '1.9.3-p0' => [
         {
