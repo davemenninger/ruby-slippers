@@ -44,7 +44,26 @@ node.default['rbenv']['user_installs'] = [
   },
 ]
 
-include_recipe 'ruby_rbenv::user'
+# Install rbenv and makes it avilable to the selected user
+version = '2.4.1'
+
+# Keeps the rbenv install upto date
+rbenv_user_install 'vagrant'
+
+rbenv_plugin 'ruby-build' do
+  git_url 'https://github.com/rbenv/ruby-build.git'
+  user 'vagrant'
+end
+
+rbenv_ruby '2.4.1' do
+  user 'vagrant'
+end
+
+rbenv_global version do
+  user 'vagrant'
+end
+
+#include_recipe 'ruby_rbenv::user'
 
 ssh_known_hosts_entry 'github.com'
 
@@ -57,8 +76,8 @@ gem_package 'rubocop'
 gem_package 'sequel'
 
 directory '/usr/local/git_checkout' do
-  # owner 'vagrant'
-  # group 'vagrant'
+  owner 'vagrant'
+  group 'vagrant'
   mode '0755'
   recursive true
   action :create
